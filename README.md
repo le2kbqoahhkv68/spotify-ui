@@ -1,34 +1,17 @@
 # spotify-ui
 
-## Project setup
-```
-npm install
-```
+Author: David Manso Fernández
+Email: d.mansofernandez@gmail.com
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Project stack
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- TypeScript.
+- PUG Preprocessor.
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Styles
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+Colors are from Spotify branding guidelines.
 
-### Lints and fixes files
-```
-npm run lint
-```
+(Spotify Branding guidelines)[https://developer.spotify.com/branding-guidelines/].
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Project
