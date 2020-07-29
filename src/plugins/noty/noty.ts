@@ -5,7 +5,7 @@ const defaultConfig = {
   layout: 'topRight',
   timeout: 2000,
   progressBar: false,
-  theme: 'spotifind'
+  theme: 'mint'
 }
 
 class Notification {
