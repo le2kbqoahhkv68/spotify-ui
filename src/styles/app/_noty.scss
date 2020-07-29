@@ -1,0 +1,118 @@
+#noty_layout__topRight {
+  width: 350px;
+}
+
+.noty_bar {
+  margin: 4px 0;
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+
+  .noty_body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 350px;
+    height: 48px;
+    padding: 10px 10px 10px 0;
+    background-color: $gray-scale-color-white;
+    border: 1px solid $gray-scale-color-light;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 $gray-scale-color-light;
+    color: $gray-scale-color-black;
+
+    p {
+      font-family: 'IBM Plex Sans';
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 18px;
+      padding: 15px 0;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+
+      svg {
+        fill: $gray-scale-color-black
+      }
+    }
+    
+    .noty_icon {
+      min-width: 48px;
+      width: 48px;
+      height: 48px;
+      margin-right: 14px;
+    }
+  }
+}
+
+.noty_theme__eskariam.noty_type__error {
+  .noty_body {
+    color: $negative-color;
+    span {
+      background-color: $negative-color;
+      svg {
+        background-color: $negative-color;
+        fill: $gray-scale-color-white;
+      }
+    }
+  }
+
+  .noty_progressbar {
+    background-color: $negative-color;
+  }
+}
+
+.noty_theme__eskariam.noty_type__info {
+  .noty_body {
+    color: $info-color;
+    span {
+      background-color: $info-color;
+      svg {
+        background-color: $info-color;
+        fill: $gray-scale-color-white;
+      }
+    }
+  }
+
+  .noty_progressbar {
+    background-color: $info-color;
+  }
+}
+
+.noty_theme__eskariam.noty_type__warning {
+  .noty_body {
+    color: $warning-color;
+    span {
+      background-color: $warning-color;
+      svg {
+        background-color: $warning-color;
+        fill: $gray-scale-color-white;
+      }
+    }
+  }
+
+  .noty_progressbar {
+    background-color: $warning-color;
+  }
+}
+
+.noty_theme__eskariam.noty_type__success {
+  .noty_body {
+    color: $positive-color;
+    span {
+      background-color: $positive-color;
+      svg {
+        background-color: $positive-color;
+        fill: $gray-scale-color-white;
+      }
+    }
+  }
+
+  .noty_progressbar {
+    background-color: $positive-color;
+  }
+}

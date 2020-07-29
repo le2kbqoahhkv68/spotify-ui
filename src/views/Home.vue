@@ -4,12 +4,18 @@
 </template>
 
 <script>
+import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
+@Component({
   name: 'Home',
   components: {
     HelloWorld
+  }
+})
+export default class extends Vue {
+  mounted () {
+    this.$noty.success({ text: 'hola' })
   }
 }
 </script>

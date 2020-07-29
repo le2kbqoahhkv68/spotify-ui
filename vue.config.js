@@ -14,5 +14,14 @@ module.exports = {
       .use('pug-plain-loader')
       .loader('pug-plain-loader')
       .options({ basedir: './' })
+  },
+
+
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: '@import "@/styles/vars/index.scss";'
+      }
+    }
   }
 }

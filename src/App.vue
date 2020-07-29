@@ -3,4 +3,4 @@
     router-view
 </template>
 
-<style lang="scss"></style>
+<style lang='scss' src='@/styles/app/index.scss'></style>
