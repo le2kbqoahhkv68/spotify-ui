@@ -20,11 +20,7 @@ class Notification {
     return new Noty(config).show()
   }
 
-  renderOutput (text: string, iconName = 'icon-alert-circle-outline') {
-    // return '<span class="noty_icon"><svg height="20px" width="20px">' +
-    //       `<use xlink:href="#${iconName}"></use></svg>` +
-    //       '</span>' +
-    //       `<p>${text}</p>`
+  renderOutput (text: string) {
     return `<p>${text}</p>`
   }
 
@@ -33,7 +29,7 @@ class Notification {
       type: 'success',
       timeout: 1000,
       ...customs,
-      text: this.renderOutput(customs.text, 'icon-checkmark-circle-2-outline')
+      text: this.renderOutput(customs.text)
     })
   }
 
