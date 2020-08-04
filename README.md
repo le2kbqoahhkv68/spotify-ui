@@ -15,6 +15,15 @@ Colors are from Spotify branding guidelines.
 
 (Spotify Branding guidelines)[https://developer.spotify.com/branding-guidelines/].
 
+
+## Spotify API
+
+(Spotify Web API)[https://api.spotify.com/] provides endpoints to retrieve information about songs, albums and artists.
+
+There's an attached Postman collection used during development for testing purposes. Import it from (spotifind.postman.json)[src/spotifind.postman.json].
+
+The used authorization guide is (Spotify Web API Client Credentials Flow)[https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow]. Click to see further information.
+
 ## Notifications
 
 Notifications can be thrown using a custom plugin which is a wrapper of (noty)[https://ned.im/noty/] lib.
