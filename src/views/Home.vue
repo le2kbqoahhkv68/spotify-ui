@@ -6,6 +6,7 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld.vue'
+import { getAccessToken } from '@/api/core/auth'
 
 @Component({
   name: 'Home',
@@ -15,7 +16,9 @@ import HelloWorld from '@/components/HelloWorld.vue'
 })
 export default class extends Vue {
   mounted () {
-    this.$noty.success({ text: 'hola' })
+    console.log(getAccessToken)
+    getAccessToken()
+      .then(data => { console.log('data', data) })
   }
 }
 </script>
