@@ -6,7 +6,7 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld.vue'
-import { getAccessToken } from '@/api/core/auth'
+import testCall from '@/api/services/test'
 
 @Component({
   name: 'Home',
@@ -16,8 +16,7 @@ import { getAccessToken } from '@/api/core/auth'
 })
 export default class extends Vue {
   mounted () {
-    console.log(getAccessToken)
-    getAccessToken()
+    testCall()
       .then(data => { console.log('data', data) })
   }
 }

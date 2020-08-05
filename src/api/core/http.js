@@ -1,10 +1,11 @@
+/* eslint-disable */
 import axios from 'axios'
+import { requestInterceptor } from './interceptors'
 
 class HttpClient {
   constructor() {
-    this.client = axios.create({ baseURL: API_URL })
-    interceptors.createRequestInterceptor(this)
-    interceptors.createResponseInterceptor(this)
+    this.client = axios.create({ baseURL: process.env.VUE_APP_SPOTIFY_API_URL })
+    requestInterceptor(this)
   }
 
   request(method, url, data, config) {

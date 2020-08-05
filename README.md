@@ -26,8 +26,8 @@ The used authorization guide is (Spotify Web API Client Credentials Flow)[https:
 
 There are two variables set in a (.env)[src/.env] file:
 
-VUE_SPOTIFY_CLIENT_ID
-VUE_SPOTIFY_CLIENT_SECRET
+VUE_APP_SPOTIFY_CLIENT_ID
+VUE_APP_SPOTIFY_CLIENT_SECRET
 
 *NOTE: This is not a good practice because environment variables are embedded into the build, so anyone can view them inspecting app's files. But it was the faster way to integrate the API for the code test. The best approach would be to inject these keys throw execution container variables or to create a proxy API to perfom token actions.*
 

@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true, // added to import http libs
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
