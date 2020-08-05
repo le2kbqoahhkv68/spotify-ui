@@ -55,7 +55,21 @@ Even though only one language is used (Spanish), vue-i18n lib allows you to mana
 
 The plugin used is from the most used i18n vue library (kazupon vue-i18n lib)[https://kazupon.github.io/vue-i18n/].
 
+You can see basic configuration under (plugins i18n folder)[src/plugins/i18n]
+
 ## SVG Icons
 
+FontAwesome is installed as project dependency and then minified css file is imported in partial scss icons file (_icons.scss)[src/styles/app/_icons.scss] from the module.
+
+You can place Font Awesome icons just about anywhere using a style prefix and the icon’s name. See the example below: 
+
+```
+i.fas.fa-camera
+```
+
+See (FontAwesome guide)[https://fontawesome.com/how-to-use/] for further info.
+See (icons gallery)[https://fontawesome.com/icons?d=gallery].
+
+You can modify its color or size modifying css properties as you do with fonts.
 
 ## Project

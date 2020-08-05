@@ -1,6 +1,9 @@
 <template lang='pug'>
   div
     p hello
+    i.fas.fa-camera
+    i.fab.fa-font-awesome
+    p {{ $t('test') }}
 </template>
 
 <script>
