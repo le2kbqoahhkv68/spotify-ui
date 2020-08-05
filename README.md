@@ -29,7 +29,7 @@ There are two variables set in a (.env)[src/.env] file:
 VUE_APP_SPOTIFY_CLIENT_ID
 VUE_APP_SPOTIFY_CLIENT_SECRET
 
-*NOTE: This is not a good practice because environment variables are embedded into the build, so anyone can view them inspecting app's files. But it was the faster way to integrate the API for the code test. The best approach would be to inject these keys throw execution container variables or to create a proxy API to perfom token actions.*
+*NOTE: This is not a good practice because environment variables are embedded into the build, so anyone can view them inspecting app's files. But it was the faster way to integrate the API for the code test. The best approach would be injecting these keys throw execution container variables or creating a proxy API to perfom token actions.*
 
 ## Notifications
 
@@ -48,5 +48,14 @@ this.$noty.info({ text:  })
 ```
 
 See (noty plugin folder)[src/plugins] for further info.
+
+## i18n
+
+Even though only one language is used (Spanish), vue-i18n lib allows you to manage static text without hard coding the data.
+
+The plugin used is from the most used i18n vue library (kazupon vue-i18n lib)[https://kazupon.github.io/vue-i18n/].
+
+## SVG Icons
+
 
 ## Project
