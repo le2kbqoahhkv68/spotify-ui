@@ -20,49 +20,45 @@ class Notification {
     return new Noty(config).show()
   }
 
-  renderOutput (text: string) {
-    return `<p>${text}</p>`
+  renderOutput (msg: string, icon: string) {
+    return (!!icon ? `<i class='fas ${icon}'></i>` : '') + `<p>${msg}</p>`
   }
 
-  success (customs: any) {
+  success (msg: string) {
     this._show({
       type: 'success',
-      timeout: 1000,
-      ...customs,
-      text: this.renderOutput(customs.text)
+      timeout: 100000,
+      text: this.renderOutput(msg, 'fa-check-circle')
     })
   }
 
-  error (customs: any) {
+  error (msg: string) {
     this._show({
       type: 'error',
       closeWith: ['click'],
-      timeout: 8000,
+      timeout: 3000,
       progressBar: false,
-      ...customs,
-      text: this.renderOutput(customs.text)
+      text: this.renderOutput(msg, 'fa-times-circle')
     })
   }
 
-  warning (customs: any) {
+  warning (msg: string) {
     this._show({
       type: 'warning',
       closeWith: ['click'],
-      timeout: 8000,
+      timeout: 3000,
       progressBar: false,
-      ...customs,
-      text: this.renderOutput(customs.text)
+      text: this.renderOutput(msg, 'fa-exclamation-circle')
     })
   }
 
-  info (customs: any) {
+  info (msg: string) {
     this._show({
       type: 'info',
       closeWith: ['click'],
-      timeout: 8000,
+      timeout: 3000,
       progressBar: false,
-      ...customs,
-      text: this.renderOutput(customs.text)
+      text: this.renderOutput(msg, 'fa-info-circle')
     })
   }
 }

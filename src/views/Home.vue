@@ -19,7 +19,10 @@ import testCall from '@/api/services/test'
 })
 export default class extends Vue {
   mounted () {
-    console.log('w')
+    this.$noty.success('Mensaje de prueba')
+    this.$noty.error('Mensaje de prueba')
+    this.$noty.warning('Mensaje de prueba')
+    this.$noty.info('Mensaje de prueba')
     testCall()
       .then(data => { console.log('3', data) })
       .catch((error) => console.log('e', error))

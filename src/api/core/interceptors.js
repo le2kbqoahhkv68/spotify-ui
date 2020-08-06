@@ -25,7 +25,6 @@ const responseInterceptor = httpClient => {
     async error => {
       const httpCode = get(error, ['response', 'status'], undefined)
       const originalRequest = error.config
-      Vue.prototype.$noty.error({ text: 'Ha ocurrido un error' })
 
       /**
        * If you receive a 401 error and it's not a retry from the original, a new token is
@@ -48,7 +47,7 @@ const responseInterceptor = httpClient => {
 
       // Shows default error notification
       const i18nKey = `api.error.${httpCode}`
-      Vue.prototype.$noty.error({ text: i18n.t(i18nKey) })
+      Vue.prototype.$noty.error(i18n.t(i18nKey))
 
       return Promise.reject(error)
     }
