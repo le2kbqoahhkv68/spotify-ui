@@ -3,11 +3,15 @@
 Author: David Manso Fernández
 Email: d.mansofernandez@gmail.com
 
-## Project stack
+## Project stack summary
 
-- TypeScript.
-- PUG Preprocessor.
-- Notifications: (noty)[https://ned.im/noty/] lib and custom wrapper for use it with Vue.
+- SCSS Preprocessor
+- PUG Preprocessor
+- TypeScript
+- Axios
+- Notifications: (noty)[https://ned.im/noty/] lib and custom wrapper for use it with Vue
+- Lodash
+- vue-i18n
 
 ## Styles
 
@@ -23,8 +27,10 @@ You can see two different folders:
 - (src/api/core)[src/api/core] contains everything necessary to communicate:
   - http.js: exports an axios wrapped instance, which is common in the whole app.
   - auth.js: contains functions used to request and manage auth tokens. It's a different instance of axios because the request is made to a different API url than the rest of the services.
-  - interceptor.js: contains interceptors set in http.js instance which add token in every request for example.
+  - interceptor.js: contains interceptors set in http.js instance. Request interceptor adds auth token, and response interceptor handles errors.
 - (src/api/services)[src/api/services] contains every request function separated by file.
+
+The bearer token is stored in *session storage*. Why ? Because it has a short time of expiration (3600s), and the most common scenario would be that the token is expired when the user access again to the app.
 
 ## Spotify API
 
@@ -40,6 +46,8 @@ VUE_APP_SPOTIFY_CLIENT_ID
 VUE_APP_SPOTIFY_CLIENT_SECRET
 
 *NOTE: This is not a good practice because environment variables are embedded into the build, so anyone can view them inspecting app's files. But it was the faster way to integrate the API for the code test. The best approach would be injecting these keys throw execution container variables or creating a proxy API to perfom token actions.*
+
+See (src/api/core/interceptors.js)[src/api/core/interceptors.js]. According to Spotify Web API documention, there are a few errores handled there.
 
 ## Notifications
 

@@ -1,3 +1,7 @@
 export default {
-  test: 'Mensaje de prueba'
+  api: {
+    error: {
+      undefined: 'Ha ocurrido un error'
+    }
+  }
 }

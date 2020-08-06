@@ -1,6 +1,5 @@
 /* eslint-disable */
 import axios from 'axios'
-import httpClient from './http'
 
 const requestAccessToken = () => {
   const url = process.env.VUE_APP_SPOTIFY_API_AUTH_URL
@@ -32,8 +31,12 @@ const getAccessToken = () => {
   return sessionStorage.getItem('accessToken')
 }
 
+const removeAccessToken = () => {
+  sessionStorage.removeItem('accesToken')
+}
+
 const hasAccessToken = () => {
   return !!getAccessToken()
 }
 
-export { requestAccessToken, getAccessToken, hasAccessToken }
+export { requestAccessToken, getAccessToken, removeAccessToken, hasAccessToken }

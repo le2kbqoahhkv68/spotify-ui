@@ -19,6 +19,7 @@ import testCall from '@/api/services/test'
 })
 export default class extends Vue {
   mounted () {
+    console.log('w')
     testCall()
       .then(data => { console.log('data', data) })
   }
