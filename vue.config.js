@@ -16,7 +16,6 @@ module.exports = {
       .options({ basedir: './' })
   },
 
-
   css: {
     loaderOptions: {
       sass: {

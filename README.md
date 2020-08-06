@@ -15,6 +15,16 @@ Colors are from Spotify branding guidelines.
 
 (Spotify Branding guidelines)[https://developer.spotify.com/branding-guidelines/].
 
+## API - http
+
+API-http classes are under (src/api)[src/api] directory. Axios is used to wrap every request, but there are custom classes to perform these actions.
+
+You can see two different folders:
+- (src/api/core)[src/api/core] contains everything necessary to communicate:
+  - http.js: exports an axios wrapped instance, which is common in the whole app.
+  - auth.js: contains functions used to request and manage auth tokens. It's a different instance of axios because the request is made to a different API url than the rest of the services.
+  - interceptor.js: contains interceptors set in http.js instance which add token in every request for example.
+- (src/api/services)[src/api/services] contains every request function separated by file.
 
 ## Spotify API
 

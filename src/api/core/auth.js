@@ -17,7 +17,6 @@ const requestAccessToken = () => {
     }
   }
 
-
   return axios.post(
     url,
     body,
