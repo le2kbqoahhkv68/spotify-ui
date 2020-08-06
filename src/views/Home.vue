@@ -21,7 +21,8 @@ export default class extends Vue {
   mounted () {
     console.log('w')
     testCall()
-      .then(data => { console.log('data', data) })
+      .then(data => { console.log('3', data) })
+      .catch((error) => console.log('e', error))
   }
 }
 </script>

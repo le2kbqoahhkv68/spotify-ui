@@ -1,5 +1,4 @@
 /* eslint-disable */
-import axios from 'axios'
 import Vue from 'vue'
 import i18n from '@/plugins/i18n/config'
 import { get } from 'lodash'
@@ -13,25 +12,10 @@ const requestInterceptor = httpClient => {
       if (!hasAccessToken()) { await requestAccessToken() }
       config.headers.Authorization = `Bearer ${getAccessToken()}`
       return config
-    }
-  ),
-  error => Promise.reject(error)
+    },
+    error => Promise.reject(error)
+  )
 }
-
-
-// let failedQueue = []
-
-// const processQueue = (error, token = null) => {
-//   failedQueue.forEach(prom => {
-//     if (error) {
-//       prom.reject(error)
-//     } else {
-//       prom.resolve(token)
-//     }
-//   })
-
-//   failedQueue = []
-// }
 
 const responseInterceptor = httpClient => {
   const { client } = httpClient
@@ -41,6 +25,7 @@ const responseInterceptor = httpClient => {
     async error => {
       const httpCode = get(error, ['response', 'status'], undefined)
       const originalRequest = error.config
+      Vue.prototype.$noty.error({ text: 'Ha ocurrido un error' })
 
       /**
        * If you receive a 401 error and it's not a retry from the original, a new token is
@@ -53,15 +38,12 @@ const responseInterceptor = httpClient => {
        */
       if (httpCode === 401 && !originalRequest._retry) {
         originalRequest._retry = true
-
         await requestAccessToken()
-          .then(() => {
-            if (hasAccessToken()) {
-              originalRequest.headers.Authorization = `Bearer ${getAccessToken()}`
-              axios(originalRequest)
-            }
-            return
-          })
+        if (hasAccessToken()) {
+          originalRequest.headers.Authorization = `Bearer ${getAccessToken()}`
+          client(originalRequest)
+          return
+        }
       }
 
       // Shows default error notification

@@ -1,3 +1,8 @@
 // noty lib import
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
+
+// Overwrite
+.noty_body {
+  font-weight: 500;
+}
