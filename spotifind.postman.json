@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "b49d13ce-9f54-4f42-a964-9e427d0f54c5",
+		"name": "Spotifind",
+		"description": "Spotifind collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autorized",
+			"item": [
+				{
+					"name": "Test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"tracks",
+								"2TpxZ7JUBn3uw46aR7qd6V"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "88caeaa4-488d-47d6-a835-c431a62d85a0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a112c141-3de7-4675-9aef-8ce0af817539",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f48630e9-dfc0-449f-a3de-15415cca8be2",
+						"exec": [
+							"// Store Bearer token as variable",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set('accessToken', jsonData.access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{clientSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{clientId}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				},
+				"description": "Gets token for future requests."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "61bcb82c-2965-469b-b803-be5f313bf301",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6b5d2492-6f31-4714-ad5c-65723308d45c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2a8b5394-c4d4-4d28-88b4-86e6538c95a2",
+			"key": "clientId",
+			"value": "9c8d0248c442472fa7f7ed20e2930d89"
+		},
+		{
+			"id": "ff78789b-a594-47f9-851d-b4a9ebd7c3f3",
+			"key": "clientSecret",
+			"value": "88a599ece52d4a128f06b34f5c8970e5"
+		},
+		{
+			"id": "4a97e0e6-9a40-4ae4-aec0-051419459966",
+			"key": "apiUrl",
+			"value": "https://api.spotify.com/v1"
+		},
+		{
+			"id": "dd828e65-f9a3-42ed-a3d2-8a1a6dab5921",
+			"key": "accessToken",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}

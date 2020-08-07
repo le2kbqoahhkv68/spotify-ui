@@ -1,0 +1,31 @@
+// noty lib import
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+
+// Overwrite
+.noty_theme__mint.noty_bar {
+  border-radius: $radius-default;
+
+  .noty_body {
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    padding: 1em 1.25em;
+
+    // icon
+    & > i {
+      font-size: 1.5em;
+
+      & ~ p {
+        margin-left: 1rem;
+      }
+    }
+
+    & > p {
+      font-size: 1em;
+      margin: 0;
+    }
+  }
+}
