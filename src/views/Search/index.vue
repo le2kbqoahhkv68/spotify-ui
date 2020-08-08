@@ -24,12 +24,12 @@ export default class extends Vue {}
 <style lang='scss' scoped>
   section#search {
     position: relative;
-    height: 100vh;
+    min-height: 100%;
     width: 100vw;
-    padding: 4rem 0;
+    padding: 2rem 0;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
     & > * {

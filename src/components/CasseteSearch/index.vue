@@ -29,7 +29,7 @@ export default class HelloWorld extends Vue {
 
     animation-name: casseteEnter;
     animation-fill-mode: both;
-    animation-duration: 1s;
+    animation-duration: .75s;
     animation-timing-function: ease-out;
     font-family: 'Pangolin';
     font-size: 1rem;
