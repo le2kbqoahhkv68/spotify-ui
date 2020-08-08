@@ -19,23 +19,23 @@ class HttpClient {
     })
   }
 
-  get(url, data, config) {
+  get(url, data, config = {}) {
     return this.request('get', url, data, config)
   }
 
-  post(url, data, config) {
+  post(url, data, config = {}) {
     return this.request('post', url, data, config)
   }
 
-  put(url, data, config) {
+  put(url, data, config = {}) {
     return this.request('put', url, data, config)
   }
 
-  patch(url, data, config) {
+  patch(url, data, config = {}) {
     return this.request('patch', url, data, config)
   }
 
-  delete(url, data, config) {
+  delete(url, data, config = {}) {
     return this.request('delete', url, data, config)
   }
 

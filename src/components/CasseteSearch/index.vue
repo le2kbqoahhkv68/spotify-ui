@@ -6,7 +6,7 @@
 </template>
 
 <script lang='ts'>
-import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import { Component, Vue, Emit } from 'vue-property-decorator'
 import { Debounce } from 'vue-debounce-decorator'
 
 // types
@@ -14,8 +14,6 @@ import { InputEvent } from '@/typings/InputEvent'
 
 @Component
 export default class CasseteSearch extends Vue {
-  @Prop() private msg!: string;
-
   @Emit('input')
   @Debounce(500)
   handleInput (event: InputEvent): string {
@@ -26,16 +24,16 @@ export default class CasseteSearch extends Vue {
 
 <style scoped lang="scss">
   article#cassete {
-  @keyframes casseteEnter {
-    from {
-      opacity: 0;
-      transform: translateX(-200%) rotate(0);
+    @keyframes casseteEnter {
+      from {
+        opacity: 0;
+        transform: translateX(-200%) rotate(40deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(-20deg);
+      }
     }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(-10deg);
-    }
-  }
 
     animation-name: casseteEnter;
     animation-fill-mode: both;

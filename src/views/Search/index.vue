@@ -12,6 +12,9 @@ import { Component, Vue } from 'vue-property-decorator'
 // components
 import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
 
+// api
+import getSearch from '@/api/services/getSearch'
+
 @Component({
   name: 'Search',
   components: {
@@ -20,7 +23,10 @@ import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
 })
 export default class Search extends Vue {
   handleInput (input: string): void {
-    console.log('input', input)
+    getSearch(input)
+      .then(data => {
+        console.log('data', data)
+      })
   }
 }
 </script>
