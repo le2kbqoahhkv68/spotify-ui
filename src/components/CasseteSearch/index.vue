@@ -2,15 +2,25 @@
   article#cassete
     img(src='./assets/cassete.png')
     p.label {{ $t('cassete.label') }}
-    input(type='text')
+    input(type='text' @input='handleInput')
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+<script lang='ts'>
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import { Debounce } from 'vue-debounce-decorator'
+
+// types
+import { InputEvent } from '@/typings/InputEvent'
 
 @Component
-export default class HelloWorld extends Vue {
+export default class CasseteSearch extends Vue {
   @Prop() private msg!: string;
+
+  @Emit('input')
+  @Debounce(500)
+  handleInput (event: InputEvent): string {
+    return event.target.value
+  }
 }
 </script>
 

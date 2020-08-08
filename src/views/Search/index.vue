@@ -2,15 +2,15 @@
   section#search
     .container
       .content
-        spotifind-cassete-search
+        spotifind-cassete-search(@input='handleInput')
       .content
 </template>
 
-<script>
+<script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 
 // components
-import SpotifindCasseteSearch from '@/components/CasseteSearch'
+import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
 
 @Component({
   name: 'Search',
@@ -18,7 +18,11 @@ import SpotifindCasseteSearch from '@/components/CasseteSearch'
     SpotifindCasseteSearch
   }
 })
-export default class extends Vue {}
+export default class Search extends Vue {
+  handleInput (input: string): void {
+    console.log('input', input)
+  }
+}
 </script>
 
 <style lang='scss' scoped>
