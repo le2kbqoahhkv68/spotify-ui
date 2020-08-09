@@ -17,6 +17,5 @@ export default (q: string, type: SpotifyTypesEnum[] = Object.values(SpotifyTypes
     offset,
     limit
   }
-  debugger
   return httpClient.get('/search', { params })
 }

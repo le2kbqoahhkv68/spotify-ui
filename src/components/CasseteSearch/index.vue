@@ -5,7 +5,7 @@
     input(type='text' @input='handleInput')
     .types
       label(v-for='type of typesEnum' :for='type') {{ $t(`spotify.types.${type}`) }}
-        input(type='checkbox' :id='type' :value='type' v-model='types[type]')
+        input(type='checkbox' :id='type' @change='handleCheck(type)' v-model='types[type]')
         .checkmark
 
 </template>
@@ -17,9 +17,11 @@ import { Debounce } from 'vue-debounce-decorator'
 // types
 import { InputEvent } from '@/typings/InputEvent'
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
+import { SearchInputEvent } from '@/typings/SearchInputEvent'
 
 @Component
 export default class CasseteSearch extends Vue {
+  q = ''
   types = {
     album: true,
     artist: true,
@@ -32,9 +34,23 @@ export default class CasseteSearch extends Vue {
   }
 
   @Emit('input')
+  emitInput (): SearchInputEvent | undefined {
+    if (!this.q) return
+    return {
+      q: this.q,
+      types: this.typesEnum.filter(type => !!this.types[type])
+    }
+  }
+
   @Debounce(500)
-  handleInput (event: InputEvent): string {
-    return event.target.value
+  handleInput (event: InputEvent): void {
+    this.q = event.target.value
+    this.emitInput()
+  }
+
+  @Debounce(500)
+  handleCheck (): void {
+    this.emitInput()
   }
 }
 </script>
@@ -100,6 +116,11 @@ export default class CasseteSearch extends Vue {
         font-size: 1em;
         padding-left: 1.25em;
         position: relative;
+        transition: color $duration-base;
+
+        &:hover {
+          color: $color-yellow-dark;
+        }
 
         input[type='checkbox'] {
           opacity: 0;

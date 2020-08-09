@@ -9,11 +9,14 @@
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 
+// api
+import getSearch from '@/api/services/getSearch'
+
 // components
 import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
 
-// api
-import getSearch from '@/api/services/getSearch'
+// typings
+import { SearchInputEvent } from '../../typings/SearchInputEvent'
 
 @Component({
   name: 'Search',
@@ -22,8 +25,8 @@ import getSearch from '@/api/services/getSearch'
   }
 })
 export default class Search extends Vue {
-  handleInput (input: string): void {
-    getSearch(input)
+  handleInput (input: SearchInputEvent): void {
+    getSearch(input.q, input.types)
       .then(data => {
         console.log('data', data)
       })
