@@ -4,14 +4,9 @@
     p.label {{ $t('cassete.label') }}
     input(type='text' @input='handleInput')
     .types
-      .type
-        <input type="checkbox" id="cbox1" value="second_checkbox"> <label for="cbox1">artist</label>
-      .type
-        <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">track</label>
-      .type
-        <input type="checkbox" id="cbox3" value="second_checkbox"> <label for="cbox3">album</label>
-      .type
-        <input type="checkbox" id="cbox4" value="second_checkbox"> <label for="cbox4">playlist</label>
+      label(v-for='type of typesEnum' :for='type') {{ $t(`spotify.types.${type}`) }}
+        input(type='checkbox' :id='type' :value='type' v-model='types[type]')
+        .checkmark
 
 </template>
 
@@ -25,6 +20,17 @@ import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 
 @Component
 export default class CasseteSearch extends Vue {
+  types = {
+    album: true,
+    artist: true,
+    playlist: true,
+    track: true
+  }
+
+  get typesEnum (): SpotifyTypesEnum[] {
+    return Object.values(SpotifyTypesEnum)
+  }
+
   @Emit('input')
   @Debounce(500)
   handleInput (event: InputEvent): string {
@@ -80,17 +86,40 @@ export default class CasseteSearch extends Vue {
     }
 
     .types {
+      align-items: center;
       bottom: 115px;
+      display: flex;
+      justify-content: space-between;
       left: 50px;
       position: absolute;
-      width: 100%;
+      width: 350px;
 
-      .type {
-        display: inline;
-      }
+      label {
+        color: $color-black;
+        cursor: pointer;
+        font-size: 1em;
+        padding-left: 1.25em;
+        position: relative;
 
-      .type ~ .type {
-        margin-left: .5em;
+        input[type='checkbox'] {
+          opacity: 0;
+        }
+
+        input[type='checkbox']:checked ~ .checkmark {
+          background-color: $color-yellow;
+        }
+
+        .checkmark {
+          background-color: $color-white;
+          border: 2px solid $color-black;
+          border-radius: $radius-default / 2;
+          position: absolute;
+          height: 10px;
+          left: 0;
+          top: 0;
+          transition: background-color $duration-base;
+          width: 10px;
+        }
       }
     }
   }
