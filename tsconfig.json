@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true, // added to import http libs
+    "strictPropertyInitialization": false, // allow vue props
     "sourceMap": true,
     "baseUrl": ".",
     "types": [

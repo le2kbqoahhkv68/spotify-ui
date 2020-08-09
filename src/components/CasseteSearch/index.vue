@@ -33,9 +33,13 @@ export default class CasseteSearch extends Vue {
     return Object.values(SpotifyTypesEnum)
   }
 
+  get noTypeSelected (): boolean {
+    return Object.values(this.types).every(type => !type)
+  }
+
   @Emit('input')
   emitInput (): SearchInputEvent | undefined {
-    if (!this.q) return
+    if (!this.q || this.noTypeSelected) return
     return {
       q: this.q,
       types: this.typesEnum.filter(type => !!this.types[type])

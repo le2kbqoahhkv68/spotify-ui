@@ -1,9 +1,10 @@
 <template lang='pug'>
   section#search
     .container
-      .content
+      .content.cassete-search
         spotifind-cassete-search(@input='handleInput')
       .content
+        spotifind-results-list
 </template>
 
 <script lang='ts'>
@@ -14,6 +15,7 @@ import getSearch from '@/api/services/getSearch'
 
 // components
 import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
+import SpotifindResultsList from '@/components/ResultsList/index.vue'
 
 // typings
 import { SearchInputEvent } from '../../typings/SearchInputEvent'
@@ -21,7 +23,8 @@ import { SearchInputEvent } from '../../typings/SearchInputEvent'
 @Component({
   name: 'Search',
   components: {
-    SpotifindCasseteSearch
+    SpotifindCasseteSearch,
+    SpotifindResultsList
   }
 })
 export default class Search extends Vue {
@@ -65,8 +68,16 @@ export default class Search extends Vue {
       z-index: -1;
     }
 
-    .content {
-      padding-top: 6rem;
+    .container {
+      display: flex;
+
+      & > .content {
+        flex: 1;
+
+        &.cassete-search {
+          padding-top: 6rem;
+        }
+      }
     }
   }
 </style>

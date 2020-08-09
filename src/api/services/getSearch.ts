@@ -4,7 +4,14 @@ import httpClient from '../core/http'
 // spotify types enum
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 
+// spotify api types
+import { SpotifyApiAlbum } from '../typings/SpotifyApiAlbum'
+import { SpotifyApiArtist } from '../typings/SpotifyApiArtist'
+import { SpotifyApiPlaylist } from '../typings/SpotifyApiPlaylist'
+import { SpotifyApiTrack } from '../typings/SpotifyApiTrack'
+
 /**
+ * This method acts as middleware / facade, transforming API results to APP models..
  * @param q Query text.
  * @param type Type target.
  * @param offset Page, starting at 0.
