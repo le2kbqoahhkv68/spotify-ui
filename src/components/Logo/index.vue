@@ -25,7 +25,7 @@ export default class Logo extends Vue {
     display: flex;
 
     img {
-      animation-delay: 1s;
+      animation-delay: .5s;
       animation-duration: 1s;
       animation-fill-mode: both;
       animation-name: fade;
@@ -61,9 +61,10 @@ export default class Logo extends Vue {
           animation-timing-function: ease-out;
           color: $color-yellow;
           font-size: .75em;
-          font-weight: 300;
+          font-weight: 700;
           margin-top: .25em;
           padding-left: 2em;
+          text-transform: uppercase;
         }
     }
   }

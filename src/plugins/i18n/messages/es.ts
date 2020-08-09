@@ -11,5 +11,16 @@ export default {
       503: 'Servicio no disponible',
       undefined: 'Ha ocurrido un error'
     }
+  },
+  cassete: {
+    label: 'What do you want to listen to?'
+  },
+  spotify: {
+    types: {
+      album: 'Album',
+      artist: 'Artist',
+      playlist: 'Playlist',
+      track: 'Track'
+    }
   }
 }

@@ -1,13 +1,17 @@
+$navbarHeight: 4rem;
+
 header {
   position: fixed;
   width: 100vw;
-  height: 4rem;
-  background-color: $color-black-light;
+  height: $navbarHeight;
+  background-color: $color-black;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
   background-color: #000000;
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+  z-index: $zindex-nav;
 
   nav {
+
     &, & ul, & ul li {
       height: 100%;
     }
@@ -27,4 +31,10 @@ header {
       }
     }
   }
+}
+
+main {
+  height: calc(100vh - #{$navbarHeight});
+  position: relative;
+  top: $navbarHeight;
 }
