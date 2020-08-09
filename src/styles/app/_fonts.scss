@@ -3,6 +3,13 @@ html, body {
   font-size: 16px; // This application will use rem and em with base 16;
 }
 
+h2 {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  margin: 0 0 1em 0;
+  
+}
+
 
 /** Font face definition */
 @font-face {

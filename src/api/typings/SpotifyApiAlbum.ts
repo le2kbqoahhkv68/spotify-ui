@@ -1,4 +1,5 @@
 import { SpotifyApiArtist } from './SpotifyApiArtist'
+import { SpotifyImage } from './SpotifyImage'
 
 export interface SpotifyApiAlbum {
   album_type: string,
@@ -7,7 +8,7 @@ export interface SpotifyApiAlbum {
   external_urls: any
   href: string
   id: string
-  images: any[]
+  images: SpotifyImage[]
   name: string
   type: string
   uri: string

@@ -4,6 +4,10 @@
 export interface SpotifyType {
   id: string,
   name: string,
-  images?: any[]
+  images?: {
+    height: number,
+    url: string,
+    width: number
+  }[]
 }
 

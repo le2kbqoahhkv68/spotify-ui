@@ -3,8 +3,13 @@
     .container
       .content.cassete-search
         spotifind-cassete-search(@input='handleInput')
-      .content
-        spotifind-results-list
+      .content.results-list
+        spotifind-results-list(
+          :albums='albums'
+          :artists='artists'
+          :playlists='playlists'
+          :tracks='tracks'
+        )
 </template>
 
 <script lang='ts'>
@@ -19,6 +24,7 @@ import SpotifindResultsList from '@/components/ResultsList/index.vue'
 
 // typings
 import { SearchInputEvent } from '../../typings/SearchInputEvent'
+import { SpotifyType } from '../../typings/SpotifyType'
 
 @Component({
   name: 'Search',
@@ -28,10 +34,23 @@ import { SearchInputEvent } from '../../typings/SearchInputEvent'
   }
 })
 export default class Search extends Vue {
+  albums: SpotifyType[] = []
+  artists: SpotifyType[] = []
+  playlists: SpotifyType[] = []
+  tracks: SpotifyType[] = []
+
   handleInput (input: SearchInputEvent): void {
     getSearch(input.q, input.types)
-      .then(data => {
-        console.log('data', data)
+      .then(({
+        albums,
+        artists,
+        playlists,
+        tracks
+      }) => {
+        this.albums = albums
+        this.artists = artists
+        this.playlists = playlists
+        this.tracks = tracks
       })
   }
 }
@@ -76,6 +95,10 @@ export default class Search extends Vue {
 
         &.cassete-search {
           padding-top: 6rem;
+        }
+
+        &.results-list {
+          overflow: hidden;
         }
       }
     }

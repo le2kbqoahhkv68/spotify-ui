@@ -4,7 +4,7 @@
     p.label {{ $t('cassete.label') }}
     input(type='text' @input='handleInput')
     .types
-      label(v-for='type of typesEnum' :for='type') {{ $t(`spotify.types.${type}`) }}
+      label(v-for='type of typesEnum' :for='type') {{ $tc(`spotify.types.${type}`, 0) }}
         input(type='checkbox' :id='type' @change='handleCheck(type)' v-model='types[type]')
         .checkmark
 

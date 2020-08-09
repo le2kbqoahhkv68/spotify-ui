@@ -17,10 +17,10 @@ export default {
   },
   spotify: {
     types: {
-      album: 'Album',
-      artist: 'Artist',
-      playlist: 'Playlist',
-      track: 'Track'
+      album: 'Album | Albums',
+      artist: 'Artist | Artists',
+      playlist: 'Playlist | Playlists',
+      track: 'Track | Tracks'
     }
   }
 }
