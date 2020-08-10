@@ -1,7 +1,7 @@
-// 2. Specify a file with the types you want to augment
-//    Vue has the constructor type in types/vue.d.ts
+import Vue from 'vue'
+
 declare module 'vue/types/vue' {
-  // 3. Declare augmentation for Vue
+
   interface Vue {
     $noty: any;
   }

@@ -73,6 +73,7 @@ export default class TypeBox extends Vue {
   handleClick (): void {
     this.pauseEveryAudio()
     this.audioElement.play()
+    this.$noty.info(this.$t('actions.playing', { song: this.item.name }))
   }
 }
 </script>

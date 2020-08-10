@@ -18,7 +18,8 @@ export default {
   },
   actions: {
     hoverScroll: 'Hover & scroll | Keyboard arrows',
-    clickPreview: 'Click preview available in some items'
+    clickPreview: 'Click preview available in some items',
+    playing: 'Playing {song}!'
   },
   cassete: {
     label: 'What do you want to listen to?'
