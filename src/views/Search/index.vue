@@ -1,9 +1,15 @@
 <template lang='pug'>
   section#search
     .container
-      .content
+      .content.cassete-search
         spotifind-cassete-search(@input='handleInput')
-      .content
+      .content.results-list
+        spotifind-results-list(
+          :albums='albums'
+          :artists='artists'
+          :playlists='playlists'
+          :tracks='tracks'
+        )
 </template>
 
 <script lang='ts'>
@@ -14,21 +20,37 @@ import getSearch from '@/api/services/getSearch'
 
 // components
 import SpotifindCasseteSearch from '@/components/CasseteSearch/index.vue'
+import SpotifindResultsList from '@/components/ResultsList/index.vue'
 
 // typings
 import { SearchInputEvent } from '../../typings/SearchInputEvent'
+import { SpotifyType } from '../../typings/SpotifyType'
 
 @Component({
   name: 'Search',
   components: {
-    SpotifindCasseteSearch
+    SpotifindCasseteSearch,
+    SpotifindResultsList
   }
 })
 export default class Search extends Vue {
+  albums: SpotifyType[] = []
+  artists: SpotifyType[] = []
+  playlists: SpotifyType[] = []
+  tracks: SpotifyType[] = []
+
   handleInput (input: SearchInputEvent): void {
     getSearch(input.q, input.types)
-      .then(data => {
-        console.log('data', data)
+      .then(({
+        albums,
+        artists,
+        playlists,
+        tracks
+      }) => {
+        this.albums = albums
+        this.artists = artists
+        this.playlists = playlists
+        this.tracks = tracks
       })
   }
 }
@@ -38,7 +60,7 @@ export default class Search extends Vue {
   section#search {
     position: relative;
     min-height: 100%;
-    width: 100vw;
+    width: 100%;
     padding: 2rem 0;
     box-sizing: border-box;
     display: flex;
@@ -65,8 +87,30 @@ export default class Search extends Vue {
       z-index: -1;
     }
 
-    .content {
-      padding-top: 6rem;
+    .container {
+      display: flex;
+
+      @media screen and (max-width: $br-tablet) {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      & > .content {
+        flex: 1;
+
+        &.cassete-search {
+          padding-top: 6rem;
+
+          @media screen and (max-width: $br-tablet) {
+            margin: 0 auto;
+            padding: 0;
+          }
+        }
+
+        &.results-list {
+          overflow: hidden;
+        }
+      }
     }
   }
 </style>

@@ -4,7 +4,7 @@
     p.label {{ $t('cassete.label') }}
     input(type='text' @input='handleInput')
     .types
-      label(v-for='type of typesEnum' :for='type') {{ $t(`spotify.types.${type}`) }}
+      label(v-for='type of typesEnum' :for='type') {{ $tc(`spotify.types.${type}`, 0) }}
         input(type='checkbox' :id='type' @change='handleCheck(type)' v-model='types[type]')
         .checkmark
 
@@ -33,9 +33,13 @@ export default class CasseteSearch extends Vue {
     return Object.values(SpotifyTypesEnum)
   }
 
+  get noTypeSelected (): boolean {
+    return Object.values(this.types).every(type => !type)
+  }
+
   @Emit('input')
   emitInput (): SearchInputEvent | undefined {
-    if (!this.q) return
+    if (!this.q || this.noTypeSelected) return
     return {
       q: this.q,
       types: this.typesEnum.filter(type => !!this.types[type])
@@ -68,6 +72,17 @@ export default class CasseteSearch extends Vue {
       }
     }
 
+    @keyframes casseteEnterMobile {
+      from {
+        opacity: 0;
+        transform: translateX(-200%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     animation-name: casseteEnter;
     animation-fill-mode: both;
     animation-duration: .75s;
@@ -75,10 +90,19 @@ export default class CasseteSearch extends Vue {
     font-family: 'Pangolin';
     font-size: 1rem;
     height: auto;
-    width: 400px;
     position: relative;
     color: $color-black-light;
     transform: rotate(-10deg);
+
+    @media screen and (max-width: $br-tablet) {
+      transform: rotate(0);
+      padding: 0;
+      animation-name: casseteEnterMobile;
+      animation-fill-mode: both;
+      animation-duration: .75s;
+      animation-timing-function: ease-out;
+      margin: 0 auto;
+    }
 
     p.label {
       position: absolute;

@@ -1,7 +1,14 @@
+$containerMaxWidth: calc(1024px + 2 * 2rem);
+
 .container {
-  max-width: calc(1024px + 2 * 2rem);
+  width: 100%;
+  max-width: $containerMaxWidth;
   margin: 0 auto;
   height: 100%;
   padding: 0 2rem;
   box-sizing: border-box;
+
+  @media screen and (max-width: $br-tablet) {
+    width: 100%;
+  }
 }
