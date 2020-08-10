@@ -10,5 +10,6 @@ $containerMaxWidth: calc(1024px + 2 * 2rem);
 
   @media screen and (max-width: $br-tablet) {
     width: 100%;
+    max-width: 100%;
   }
 }

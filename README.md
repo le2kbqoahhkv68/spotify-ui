@@ -101,3 +101,5 @@ There are many features that haven't been done =(:
 - Print song information under the cassete.
 - Cassete animation before playing the track.
 - Improve track preview player.
+- Improve responsiveness on smallest devices.
+- Test Edge browser.
