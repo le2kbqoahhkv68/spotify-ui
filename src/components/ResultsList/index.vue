@@ -19,6 +19,9 @@ import SpotifindResultType from '@/components/ResultType/index.vue'
 // types
 import { SpotifyType } from '@/typings/SpotifyType'
 
+/**
+ * Component which renders each SpotifyType results list.
+ */
 @Component({
   components: {
     SpotifindResultType

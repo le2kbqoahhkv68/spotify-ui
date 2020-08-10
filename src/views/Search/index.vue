@@ -26,6 +26,13 @@ import SpotifindResultsList from '@/components/ResultsList/index.vue'
 import { SearchInputEvent } from '../../typings/SearchInputEvent'
 import { SpotifyType } from '../../typings/SpotifyType'
 
+/**
+ * It acts as parent component and it contains all the business logic.
+ * CasseteSearch child component emits events with the query text and filters.
+ * This view requests information using the information from CasseteSearch.
+ * Results are passed to ResultsList component through properties.
+ * State, vuex is not necessary.
+ */
 @Component({
   name: 'Search',
   components: {
@@ -39,6 +46,9 @@ export default class Search extends Vue {
   playlists: SpotifyType[] = []
   tracks: SpotifyType[] = []
 
+  /**
+   * Assign input data to component's data.
+   */
   handleInput (input: SearchInputEvent): void {
     getSearch(input.q, input.types)
       .then(({

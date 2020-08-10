@@ -3,17 +3,15 @@
     img(src='@/assets/brand/icon-white.png')
 
     div.text
-      p.title Spotifind!
-      p.subtitle Find music, be happier
+      p.title {{ $t('logo.title') }}
+      p.subtitle {{ $t('logo.subtitle') }}
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Logo extends Vue {
-  @Prop() private msg!: string;
-}
+export default class Logo extends Vue {}
 </script>
 
 <style scoped lang="scss">

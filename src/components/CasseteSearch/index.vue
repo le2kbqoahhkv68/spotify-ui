@@ -2,10 +2,10 @@
   article#cassete
     img(src='./assets/cassete.png')
     p.label {{ $t('cassete.label') }}
-    input(type='text' @input='handleInput')
+    input(type='text' @change='handleChange()' v-model='q')
     .types
       label(v-for='type of typesEnum' :for='type') {{ $tc(`spotify.types.${type}`, 0) }}
-        input(type='checkbox' :id='type' @change='handleCheck(type)' v-model='types[type]')
+        input(type='checkbox' :id='type' @change='handleChange()' v-model='types[type]')
         .checkmark
 
 </template>
@@ -15,10 +15,14 @@ import { Component, Vue, Emit } from 'vue-property-decorator'
 import { Debounce } from 'vue-debounce-decorator'
 
 // types
-import { InputEvent } from '@/typings/InputEvent'
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 import { SearchInputEvent } from '@/typings/SearchInputEvent'
 
+/**
+ * Component used as input and filter which emits events on change.
+ * @property {String} q Query text.
+ * @property {Object} types Object which contains SpotifyTypesEnum and if its hidden or not.
+ */
 @Component
 export default class CasseteSearch extends Vue {
   q = ''
@@ -29,14 +33,23 @@ export default class CasseteSearch extends Vue {
     track: true
   }
 
+  /**
+   * Returns SpotifyTypesEnum as array.
+   */
   get typesEnum (): SpotifyTypesEnum[] {
     return Object.values(SpotifyTypesEnum)
   }
 
+  /**
+   * It's necessary to avoid emitting input event if no SpotifyTypesEnum is selected. API returns an error if no type is sent.
+   */
   get noTypeSelected (): boolean {
     return Object.values(this.types).every(type => !type)
   }
 
+  /**
+   * Input emitter with query text and selected types.
+   */
   @Emit('input')
   emitInput (): SearchInputEvent | undefined {
     if (!this.q || this.noTypeSelected) return
@@ -46,14 +59,11 @@ export default class CasseteSearch extends Vue {
     }
   }
 
+  /**
+   * Emits event, debounced.
+   */
   @Debounce(500)
-  handleInput (event: InputEvent): void {
-    this.q = event.target.value
-    this.emitInput()
-  }
-
-  @Debounce(500)
-  handleCheck (): void {
+  handleChange (): void {
     this.emitInput()
   }
 }
