@@ -54,7 +54,8 @@ export default class TypeBox extends Vue {
 
 <style scoped lang="scss">
   article {
-    margin: 0 .5em ;
+    margin: 0 .5em;
+    width: 100px;
 
     &.preview {
       cursor: pointer;
@@ -86,9 +87,9 @@ export default class TypeBox extends Vue {
     p {
       font-size: .75em;
       text-align: center;
-      max-height: 26px;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 </style>

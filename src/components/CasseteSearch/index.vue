@@ -72,6 +72,17 @@ export default class CasseteSearch extends Vue {
       }
     }
 
+    @keyframes casseteEnterMobile {
+      from {
+        opacity: 0;
+        transform: translateX(-200%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     animation-name: casseteEnter;
     animation-fill-mode: both;
     animation-duration: .75s;
@@ -79,10 +90,19 @@ export default class CasseteSearch extends Vue {
     font-family: 'Pangolin';
     font-size: 1rem;
     height: auto;
-    width: 400px;
     position: relative;
     color: $color-black-light;
     transform: rotate(-10deg);
+
+    @media screen and (max-width: $br-tablet) {
+      transform: rotate(0);
+      padding: 0;
+      animation-name: casseteEnterMobile;
+      animation-fill-mode: both;
+      animation-duration: .75s;
+      animation-timing-function: ease-out;
+      margin: 0 auto;
+    }
 
     p.label {
       position: absolute;

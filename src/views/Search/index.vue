@@ -60,7 +60,7 @@ export default class Search extends Vue {
   section#search {
     position: relative;
     min-height: 100%;
-    width: 100vw;
+    width: 100%;
     padding: 2rem 0;
     box-sizing: border-box;
     display: flex;
@@ -90,12 +90,21 @@ export default class Search extends Vue {
     .container {
       display: flex;
 
+      @media screen and (max-width: $br-tablet) {
+        flex-direction: column;
+        justify-content: center;
+      }
+
       & > .content {
         flex: 1;
-        min-width: 500px;
 
         &.cassete-search {
           padding-top: 6rem;
+
+          @media screen and (max-width: $br-tablet) {
+            margin: 0 auto;
+            padding: 0;
+          }
         }
 
         &.results-list {

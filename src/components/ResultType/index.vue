@@ -49,6 +49,7 @@ export default class ResultType extends Vue {
 <style scoped lang="scss">
   article.result-type {
     position: relative;
+    margin: 1em 0;
 
     header {
       display: flex;
@@ -63,7 +64,7 @@ export default class ResultType extends Vue {
     }
 
     .items {
-      height: 150px;
+      height: 130px;
       overflow: hidden;
       width: 100%;
 
