@@ -19,7 +19,14 @@ import { get } from 'lodash'
 const getType = function (
   els: (SpotifyApiAlbum|SpotifyApiArtist|SpotifyApiPlaylist|SpotifyApiTrack)[]
 ): SpotifyType[] {
-  return els.map((el: SpotifyType) => { return { id: el.id, name: el.name, images: el.images } })
+  return els.map((el: SpotifyApiAlbum|SpotifyApiArtist|SpotifyApiPlaylist|SpotifyApiTrack) => {
+    return {
+      id: el.id,
+      name: el.name,
+      images: el.images,
+      previewUrl: el.preview_url
+    }
+  })
 }
 
 /**

@@ -5,7 +5,7 @@
       h3 {{ $t('actions.hoverScroll') }}
     .items
       .item-container(ref='itemContainer')
-        spotifind-type-box(v-for='item of items' :key='item.id' :type='item')
+        spotifind-type-box(v-for='item of items' :key='item.id' :item='item' :type='type')
 </template>
 
 <script lang='ts'>

@@ -92,6 +92,7 @@ export default class Search extends Vue {
 
       & > .content {
         flex: 1;
+        min-width: 500px;
 
         &.cassete-search {
           padding-top: 6rem;

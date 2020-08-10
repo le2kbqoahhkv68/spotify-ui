@@ -8,6 +8,7 @@ export interface SpotifyType {
     height: number,
     url: string,
     width: number
-  }[]
+  }[],
+  previewUrl?: string
 }
 
