@@ -66,7 +66,7 @@ export default class TypeBox extends Vue {
       &:hover {
         img {
           border-color: $color-green;
-          background-color: rgba($color-black-light, 0.5);
+          background-color: rgba($color-black-light, 0.7);
         }
       }
     }

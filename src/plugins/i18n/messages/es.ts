@@ -13,7 +13,8 @@ export default {
     }
   },
   actions: {
-    hoverScroll: 'Hover & scroll | Keyboard arrows'
+    hoverScroll: 'Hover & scroll | Keyboard arrows',
+    clickPreview: 'Click preview available in some items'
   },
   cassete: {
     label: 'What do you want to listen to?'

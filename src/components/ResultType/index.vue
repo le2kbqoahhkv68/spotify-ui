@@ -2,7 +2,9 @@
   article.result-type(@wheel='handleWheel' )
     header
       h2 {{ $tc(`spotify.types.${type}`, 2) }}
-      h3 {{ $t('actions.hoverScroll') }}
+      .actions
+        h3 {{ $t('actions.hoverScroll') }}
+        h3 {{ $t('actions.clickPreview') }}
     .items
       .item-container(ref='itemContainer')
         spotifind-type-box(v-for='item of items' :key='item.id' :item='item' :type='type')
@@ -37,6 +39,10 @@ export default class ResultType extends Vue {
       behavior: 'smooth'
     })
   }
+
+  someHasPreview (): boolean {
+    return this.items.some(item => !!item.previewUrl)
+  }
 }
 </script>
 
@@ -48,6 +54,12 @@ export default class ResultType extends Vue {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+      }
     }
 
     .items {
