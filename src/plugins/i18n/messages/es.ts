@@ -12,6 +12,9 @@ export default {
       undefined: 'Ha ocurrido un error'
     }
   },
+  actions: {
+    hoverScroll: 'Hover & scroll | Keyboard arrows'
+  },
   cassete: {
     label: 'What do you want to listen to?'
   },

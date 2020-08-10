@@ -7,25 +7,26 @@
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator'
 
-// lodashj
+// lodash
 import { get } from 'lodash'
 
 // types
 import { SpotifyType } from '@/typings/SpotifyType'
-
 @Component
 export default class TypeBox extends Vue {
   @Prop({ required: true, type: Object }) type: SpotifyType
 
   get imageUrl (): string {
-    return get(this.type, 'images[0].url', '')
+    const imageUrl = get(this.type, 'images[0].url')
+    if (!imageUrl) return require('./assets/no-photo.png')
+    return imageUrl
   }
 }
 </script>
 
 <style scoped lang="scss">
   article {
-    margin: 0 1em ;
+    margin: 0 .5em ;
 
     img {
       display: flex;
@@ -33,10 +34,9 @@ export default class TypeBox extends Vue {
       align-items: center;
       width: 100px;
       height: 100px;
-      border: 2px solid $color-black;
+      border: 3px solid $color-black;
       box-sizing: border-box;
       overflow: hidden;
-      // min-width: 100px;
       border-radius: $radius-default;
     }
 
