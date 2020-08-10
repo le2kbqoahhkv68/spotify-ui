@@ -3,6 +3,11 @@
 Author: David Manso Fernández
 Email: d.mansofernandez@gmail.com
 
+## Instructions
+
+Install: `npm run install`
+Serve: `npm run serve`
+
 ## Project stack summary
 
 - HTML5
