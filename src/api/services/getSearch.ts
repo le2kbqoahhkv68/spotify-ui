@@ -16,6 +16,12 @@ import { SpotifyType } from '@/typings/SpotifyType'
 // lodash
 import { get } from 'lodash'
 
+/**
+ * Transform from SpotifyApi model to app SpotifyType model.
+ * SpotifyType is the interface defined to handle every SpotifyApi model according to the requirements of this app.
+ * to-do: remove images and preview_url from SpotifyApi model.
+ * @param els Array of SpotifyApi elements.
+ */
 const getType = function (
   els: (SpotifyApiAlbum|SpotifyApiArtist|SpotifyApiPlaylist|SpotifyApiTrack)[]
 ): SpotifyType[] {
@@ -30,7 +36,7 @@ const getType = function (
 }
 
 /**
- * This method acts as middleware / facade, transforming API results to APP models..
+ * This method acts as middleware / facade, transforming API results to APP models.
  * @param q Query text.
  * @param type Type target.
  * @param offset Page, starting at 0.

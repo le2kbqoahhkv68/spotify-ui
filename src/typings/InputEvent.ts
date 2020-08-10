@@ -3,6 +3,6 @@
  */
 export interface InputEvent {
   target: {
-    value: string
-  }
+    value: string;
+  };
 }

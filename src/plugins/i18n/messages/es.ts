@@ -12,6 +12,10 @@ export default {
       undefined: 'Ha ocurrido un error'
     }
   },
+  logo: {
+    title: 'Spotifind!',
+    subtitle: 'Find music, be happier'
+  },
   actions: {
     hoverScroll: 'Hover & scroll | Keyboard arrows',
     clickPreview: 'Click preview available in some items'

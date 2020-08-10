@@ -1,9 +1,12 @@
-/* eslint-disable */
 import Vue from 'vue'
 import i18n from '@/plugins/i18n/config'
 import { get } from 'lodash'
 import { hasAccessToken, getAccessToken, requestAccessToken } from './auth'
 
+/**
+ * Token is added to the headers. If no token is present, the token is requested before do it.
+ * @param httpClient Axios wrapper http instance reference defined in http.js file.
+ */
 const requestInterceptor = httpClient => {
   const { client } = httpClient
 
@@ -17,6 +20,10 @@ const requestInterceptor = httpClient => {
   )
 }
 
+/**
+ * This interceptor handles auth authorization errors and show notification according to thej API.
+ * @param httpClient Axios wrapper http instance reference defined in http.js file.
+ */
 const responseInterceptor = httpClient => {
   const { client } = httpClient
 

@@ -4,7 +4,7 @@
       h2 {{ $tc(`spotify.types.${type}`, 2) }}
       .actions
         h3 {{ $t('actions.hoverScroll') }}
-        h3 {{ $t('actions.clickPreview') }}
+        h3(v-if='someHasPreview') {{ $t('actions.clickPreview') }}
     .items
       .item-container(ref='itemContainer')
         spotifind-type-box(v-for='item of items' :key='item.id' :item='item' :type='type')
@@ -20,6 +20,9 @@ import SpotifindTypeBox from '@/components/TypeBox/index.vue'
 import { SpotifyType } from '@/typings/SpotifyType'
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 
+/**
+ * It renders type title and items passed as props.
+ */
 @Component({
   components: {
     SpotifindTypeBox
@@ -29,6 +32,16 @@ export default class ResultType extends Vue {
   @Prop({ required: true, type: String }) type: SpotifyTypesEnum
   @Prop({ required: true, type: Array }) items: SpotifyType[]
 
+  /**
+   * Returns if any item has previewUrl to render clickPreview text.
+   */
+  get someHasPreview (): boolean {
+    return this.items.some(item => !!item.previewUrl)
+  }
+
+  /**
+   * On wheel event. It transforms vertical scroll to horizontal scroll smoothly.
+   */
   handleWheel (event: WheelEvent) {
     const itemContainer = this.$refs.itemContainer as HTMLElement
     const amount = event.deltaY > 0 ? 350 : -350
@@ -38,10 +51,6 @@ export default class ResultType extends Vue {
       left: itemContainer.scrollLeft + amount,
       behavior: 'smooth'
     })
-  }
-
-  someHasPreview (): boolean {
-    return this.items.some(item => !!item.previewUrl)
   }
 }
 </script>
