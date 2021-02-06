@@ -2,10 +2,10 @@
   article#cassete
     img(src='./assets/cassete.png')
     p.label {{ $t('cassete.label') }}
-    input(type='text' @input='handleInput')
+    input(type='text' @change='handleChange()' v-model='q')
     .types
-      label(v-for='type of typesEnum' :for='type') {{ $t(`spotify.types.${type}`) }}
-        input(type='checkbox' :id='type' @change='handleCheck(type)' v-model='types[type]')
+      label(v-for='type of typesEnum' :for='type') {{ $tc(`spotify.types.${type}`, 0) }}
+        input(type='checkbox' :id='type' @change='handleChange()' v-model='types[type]')
         .checkmark
 
 </template>
@@ -15,10 +15,14 @@ import { Component, Vue, Emit } from 'vue-property-decorator'
 import { Debounce } from 'vue-debounce-decorator'
 
 // types
-import { InputEvent } from '@/typings/InputEvent'
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 import { SearchInputEvent } from '@/typings/SearchInputEvent'
 
+/**
+ * Component used as input and filter which emits events on change.
+ * @property {String} q Query text.
+ * @property {Object} types Object which contains SpotifyTypesEnum and if its hidden or not.
+ */
 @Component
 export default class CasseteSearch extends Vue {
   q = ''
@@ -29,27 +33,37 @@ export default class CasseteSearch extends Vue {
     track: true
   }
 
+  /**
+   * Returns SpotifyTypesEnum as array.
+   */
   get typesEnum (): SpotifyTypesEnum[] {
     return Object.values(SpotifyTypesEnum)
   }
 
+  /**
+   * It's necessary to avoid emitting input event if no SpotifyTypesEnum is selected. API returns an error if no type is sent.
+   */
+  get noTypeSelected (): boolean {
+    return Object.values(this.types).every(type => !type)
+  }
+
+  /**
+   * Input emitter with query text and selected types.
+   */
   @Emit('input')
   emitInput (): SearchInputEvent | undefined {
-    if (!this.q) return
+    if (!this.q || this.noTypeSelected) return
     return {
       q: this.q,
       types: this.typesEnum.filter(type => !!this.types[type])
     }
   }
 
+  /**
+   * Emits event, debounced.
+   */
   @Debounce(500)
-  handleInput (event: InputEvent): void {
-    this.q = event.target.value
-    this.emitInput()
-  }
-
-  @Debounce(500)
-  handleCheck (): void {
+  handleChange (): void {
     this.emitInput()
   }
 }
@@ -68,6 +82,17 @@ export default class CasseteSearch extends Vue {
       }
     }
 
+    @keyframes casseteEnterMobile {
+      from {
+        opacity: 0;
+        transform: translateX(-200%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     animation-name: casseteEnter;
     animation-fill-mode: both;
     animation-duration: .75s;
@@ -75,10 +100,19 @@ export default class CasseteSearch extends Vue {
     font-family: 'Pangolin';
     font-size: 1rem;
     height: auto;
-    width: 400px;
     position: relative;
     color: $color-black-light;
     transform: rotate(-10deg);
+
+    @media screen and (max-width: $br-tablet) {
+      transform: rotate(0);
+      padding: 0;
+      animation-name: casseteEnterMobile;
+      animation-fill-mode: both;
+      animation-duration: .75s;
+      animation-timing-function: ease-out;
+      margin: 0 auto;
+    }
 
     p.label {
       position: absolute;

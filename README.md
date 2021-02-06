@@ -5,6 +5,7 @@ Email: d.mansofernandez@gmail.com
 
 ## Project stack summary
 
+- HTML5
 - SCSS Preprocessor
 - PUG Preprocessor
 - TypeScript
@@ -24,7 +25,7 @@ Colors are from Spotify branding guidelines.
 API-http classes are under [src/api](src/api) directory. Axios is used to wrap every request, but there are custom classes to perform these actions.
 
 You can see two different folders:
-- [src/api/core](src/api/core) contains everything necessary to communicate:
+- [src/api/core](src/api/core) contains everything necessary to communicate. To do: transform core JS vanila files to TS.
   - http.js: exports an axios wrapped instance, which is common in the whole app.
   - auth.js: contains functions used to request and manage auth tokens. It's a different instance of axios because the request is made to a different API url than the rest of the services.
   - interceptor.js: contains interceptors set in http.js instance. Request interceptor adds auth token, and response interceptor handles errors.
@@ -90,4 +91,15 @@ See [icons gallery](https://fontawesome.com/icons?d=gallery).
 
 You can modify its color or size modifying css properties as you do with fonts.
 
-## Project
+## TO-DO FEATURES
+There are many features that haven't been done =(:
+
+- ¡! UNIT TESTING using Jest.
+- ¡! E2E TESTING using Cypress.
+- Scroll infinite in every ResultType component using API pagination.
+- Loading spinner.
+- Print song information under the cassete.
+- Cassete animation before playing the track.
+- Improve track preview player.
+- Improve responsiveness on smallest devices.
+- Test Edge browser.

@@ -1,6 +1,6 @@
 import { SpotifyTypesEnum } from '@/typings/SpotifyTypesEnum'
 
 export interface SearchInputEvent {
-  q: string,
-  types: SpotifyTypesEnum[]
+  q: string;
+  types: SpotifyTypesEnum[];
 }

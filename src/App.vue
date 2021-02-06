@@ -1,6 +1,6 @@
 <template lang='pug'>
   #app
-    header
+    header#main-header
       .container
         nav
           ul
